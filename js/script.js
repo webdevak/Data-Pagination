@@ -3,8 +3,8 @@ Treehouse Techdegree:
 FSJS Project 2 - Data Pagination and Filtering
 */
 
-
-
+// When I search, the number of buttons does not update. The page buttons should represent how many results are present after the search.
+// When there are 0 results, there should be a message saying that no results were found.
 
 /*
 For assistance:
@@ -15,6 +15,7 @@ For assistance:
 const header = document.querySelector('.header');
 const ul = document.querySelector('.student-list');
 const linkList = document.querySelector('.link-list');
+const pagination = document.querySelector('.pagination');
 
 
 /*
@@ -41,7 +42,7 @@ function showPage(list, page ) {
       </div>
    </li> `)
       }
-   }
+ }
 }
 
 /*
@@ -80,9 +81,13 @@ linkList.addEventListener('click', (e) => {
 });
 
 
+const p = document.createElement('p');
+p.textContent = 'No results were found'
+linkList.appendChild(p);
+p.style.display = 'none'
 
 
-// Creates the searh bar input DOM element to filter through students on there respective pages
+// Creates the searh bar input DOM element to filter through students
 let headerHtml= `<label for="search" class="student-search">
 <input id="search" placeholder="Search by name...">
 <button type="button"><img src="img/icn-search.svg" alt="Search icon"></button>
@@ -100,9 +105,14 @@ searchBar.addEventListener('keyup', (e) => {
       const name = cards.textContent;
        if (name.toLowerCase().indexOf(inputName) !== -1) {
           cards.style.display = 'flex';
-       }  else  {
+            p.style.display = 'none';
+       }  else if (name.toLowerCase().indexOf(inputName) == -1) {
          cards.style.display = 'none';
-       }  
+         p.style.display = 'flex';
+         const button = document.querySelectorAll('button');
+       } else if (button.className !== 'active') {
+          button.remove();
+       }
    })
    
 });
