@@ -15,7 +15,6 @@ For assistance:
 const header = document.querySelector('.header');
 const ul = document.querySelector('.student-list');
 const linkList = document.querySelector('.link-list');
-const pagination = document.querySelector('.pagination');
 
 
 /*
@@ -109,10 +108,7 @@ searchBar.addEventListener('keyup', (e) => {
        }  else if (name.toLowerCase().indexOf(inputName) == -1) {
          cards.style.display = 'none';
          p.style.display = 'flex';
-         const button = document.querySelectorAll('button');
-       } else if (button.className !== 'active') {
-          button.remove();
-       }
+       } 
    })
    
 });
