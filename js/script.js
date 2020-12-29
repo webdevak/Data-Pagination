@@ -15,6 +15,8 @@ For assistance:
 const header = document.querySelector('.header');
 const ul = document.querySelector('.student-list');
 const linkList = document.querySelector('.link-list');
+const button = document.querySelectorAll('button')
+
 
 
 /*
@@ -41,7 +43,7 @@ function showPage(list, page ) {
       </div>
    </li> `)
       }
- }
+   }
 }
 
 /*
@@ -75,7 +77,6 @@ linkList.addEventListener('click', (e) => {
       e.target.className = 'active';
       const list = data;
     showPage(list, e.target.textContent);
-     
    }
 });
 
@@ -94,22 +95,24 @@ let headerHtml= `<label for="search" class="student-search">
 
 header.insertAdjacentHTML("beforeend",headerHtml)
 
-const searchBar = document.getElementById("search");
+   const searchBar = document.getElementById("search");
 
 searchBar.addEventListener('keyup', (e) => {
-   const inputName = e.target.value.toLowerCase();
-   const cards = document.querySelectorAll('.student-item');
-
-      Array.from(cards).forEach(function(cards){
-      const name = cards.textContent;
-       if (name.toLowerCase().indexOf(inputName) !== -1) {
-          cards.style.display = 'flex';
-            p.style.display = 'none';
-       }  else if (name.toLowerCase().indexOf(inputName) == -1) {
-         cards.style.display = 'none';
-         p.style.display = 'flex';
-       } 
-   })
    
-});
-
+   const inputName = e.target.value.toLowerCase();
+   const students = data;
+   const li = document.querySelectorAll('.student-item');
+  
+   
+   Array.from(li).forEach(function(li){
+      const name = students[i].querySelectorAll('h3');
+          if(name.toLowerCase().indexOf(inputName) !== -1) {
+                li.style.display = 'flex';
+                p.style.display = 'none';
+          }  else {
+                li.style.display = 'none';
+                p.style.display = 'flex';
+          }
+    })
+   
+   });
